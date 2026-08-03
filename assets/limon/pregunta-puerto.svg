@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Actividad portuaria de Limón</title>
+<desc id="desc">Barco de carga, grúa y contenedores en un puerto del Caribe.</desc>
+<defs>
+ <linearGradient id="sky" y1="0" y2="1"><stop stop-color="#72d9ff"/><stop offset="1" stop-color="#eefcff"/></linearGradient>
+ <linearGradient id="sea"><stop stop-color="#118fc6"/><stop offset="1" stop-color="#42d3c0"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-opacity=".22"/></filter>
+</defs>
+<rect width="1200" height="720" rx="38" fill="url(#sky)"/>
+<circle cx="1015" cy="105" r="66" fill="#ffd43b"/>
+<rect y="430" width="1200" height="290" fill="url(#sea)"/>
+<rect y="405" width="1200" height="42" fill="#6d5945"/>
+
+<g transform="translate(90 230)" filter="url(#s)">
+ <rect x="40" y="100" width="30" height="180" fill="#28364b"/>
+ <path d="M55 100 L55 15 L225 105" fill="none" stroke="#28364b" stroke-width="18"/>
+ <path d="M225 105 V275" stroke="#28364b" stroke-width="15"/>
+ <rect x="175" y="180" width="90" height="55" fill="#f05a38"/>
+</g>
+
+<g transform="translate(310 270)" filter="url(#s)">
+ <rect x="0" y="90" width="130" height="72" fill="#f05a38"/>
+ <rect x="138" y="90" width="130" height="72" fill="#f7c736"/>
+ <rect x="276" y="90" width="130" height="72" fill="#2e7ab8"/>
+ <rect x="70" y="10" width="130" height="72" fill="#42a94c"/>
+ <rect x="208" y="10" width="130" height="72" fill="#e46eb1"/>
+</g>
+
+<g transform="translate(500 365)" filter="url(#s)">
+ <path d="M0 95 H590 L520 235 H85Z" fill="#eff6fa" stroke="#28364b" stroke-width="11"/>
+ <rect x="110" y="95" width="290" height="82" fill="#2e7ab8"/>
+ <rect x="410" y="95" width="80" height="82" fill="#ffd43b"/>
+ <rect x="335" y="20" width="95" height="80" fill="#fff" stroke="#28364b" stroke-width="9"/>
+ <rect x="355" y="40" width="55" height="35" fill="#bdeaff"/>
+</g>
+
+<g transform="translate(55 45)" filter="url(#s)">
+ <rect width="690" height="148" rx="28" fill="#fff" opacity=".96"/>
+ <text x="34" y="62" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#126b43">Observa la imagen</text>
+ <text x="36" y="110" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24364b">¿Qué actividad económica representa?</text>
+</g>
+</svg>

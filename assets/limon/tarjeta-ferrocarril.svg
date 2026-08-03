@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Ferrocarril al Caribe</title>
+<desc id="desc">Ilustración educativa de un tren atravesando un paisaje tropical hacia Limón.</desc>
+<defs>
+ <linearGradient id="sky" y1="0" y2="1"><stop stop-color="#63d2ff"/><stop offset="1" stop-color="#eefcff"/></linearGradient>
+ <linearGradient id="ground"><stop stop-color="#3caf53"/><stop offset="1" stop-color="#176c3a"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".22"/></filter>
+</defs>
+<rect width="1200" height="720" rx="38" fill="url(#sky)"/>
+<circle cx="1000" cy="118" r="68" fill="#ffd33f"/>
+<path d="M0 370 C180 220 330 340 510 225 C690 112 845 300 1200 195 V720 H0Z" fill="url(#ground)"/>
+<path d="M0 565 C310 470 620 540 1200 395" stroke="#6d5b4a" stroke-width="50" fill="none"/>
+<path d="M0 565 C310 470 620 540 1200 395" stroke="#dde1e4" stroke-width="16" fill="none" stroke-dasharray="28 22"/>
+
+<g transform="translate(300 330)" filter="url(#s)">
+ <rect x="0" y="75" width="500" height="145" rx="28" fill="#db3c32" stroke="#5b2c29" stroke-width="10"/>
+ <rect x="50" y="22" width="170" height="115" rx="20" fill="#f15d45" stroke="#5b2c29" stroke-width="10"/>
+ <rect x="90" y="47" width="84" height="55" rx="8" fill="#bdeaff"/>
+ <rect x="235" y="95" width="150" height="72" rx="10" fill="#ffd43b"/>
+ <rect x="400" y="95" width="70" height="72" rx="10" fill="#2e7ab8"/>
+ <circle cx="110" cy="225" r="47" fill="#28364b"/><circle cx="110" cy="225" r="20" fill="#c9d2d8"/>
+ <circle cx="395" cy="225" r="47" fill="#28364b"/><circle cx="395" cy="225" r="20" fill="#c9d2d8"/>
+ <rect x="222" y="5" width="45" height="95" fill="#28364b"/>
+ <path d="M245 5 C255 -45 300 -25 314 -70" fill="none" stroke="#fff" stroke-width="25" opacity=".75"/>
+</g>
+
+<g transform="translate(55 45)" filter="url(#s)">
+ <rect width="610" height="150" rx="28" fill="#fff" opacity=".96"/>
+ <text x="34" y="63" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#126b43">Dato histórico</text>
+ <text x="36" y="112" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#24364b">El ferrocarril ayudó a conectar Limón con el resto del país.</text>
+</g>
+</svg>

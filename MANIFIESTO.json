@@ -1,0 +1,75 @@
+{
+  "version": "0.2",
+  "archivos": [
+    {
+      "archivo": ".nojekyll",
+      "bytes": 0,
+      "sha256_12": "e3b0c44298fc"
+    },
+    {
+      "archivo": "README.md",
+      "bytes": 3177,
+      "sha256_12": "9a1b844ec1f8"
+    },
+    {
+      "archivo": "ar-limon.html",
+      "bytes": 2893,
+      "sha256_12": "06d6599a0814"
+    },
+    {
+      "archivo": "assets/limon/limon-representativa.svg",
+      "bytes": 4266,
+      "sha256_12": "2fd096fa18b3"
+    },
+    {
+      "archivo": "assets/limon/pregunta-puerto.svg",
+      "bytes": 2343,
+      "sha256_12": "5cc0b8564718"
+    },
+    {
+      "archivo": "assets/limon/tarjeta-ferrocarril.svg",
+      "bytes": 2290,
+      "sha256_12": "9c6cad47c13e"
+    },
+    {
+      "archivo": "assets/logo-geoaventuras.jpg",
+      "bytes": 250788,
+      "sha256_12": "aa4258881743"
+    },
+    {
+      "archivo": "assets/mapa-costa-rica.svg",
+      "bytes": 1957,
+      "sha256_12": "0675c63dedd6"
+    },
+    {
+      "archivo": "datos/catalogo.js",
+      "bytes": 631,
+      "sha256_12": "c22078478908"
+    },
+    {
+      "archivo": "datos/limon.js",
+      "bytes": 4338,
+      "sha256_12": "e1fe4b9dadc5"
+    },
+    {
+      "archivo": "estilos.css",
+      "bytes": 11220,
+      "sha256_12": "7f5135c8eb10"
+    },
+    {
+      "archivo": "index.html",
+      "bytes": 8125,
+      "sha256_12": "b589e9fde93d"
+    },
+    {
+      "archivo": "juego.js",
+      "bytes": 14177,
+      "sha256_12": "2b40bca36155"
+    },
+    {
+      "archivo": "marcador-prueba.html",
+      "bytes": 1376,
+      "sha256_12": "5c918744fa74"
+    }
+  ]
+}

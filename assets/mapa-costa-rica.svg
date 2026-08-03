@@ -1,31 +1,223 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
-<title id="title">Mapa interactivo esquemático de Costa Rica</title>
-<desc id="desc">Mapa estilizado con Limón resaltado y las demás provincias bloqueadas.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+<title id="title">Mapa de Costa Rica con forma realista y provincias</title>
+<desc id="desc">Mapa estilizado de Costa Rica con forma más real, dividido por provincias. Limón aparece habilitada en verde y las demás provincias en gris. El diseño incluye mar, relieve suave y estilo de aventura educativa.</desc>
 <defs>
- <filter id="s"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-opacity=".18"/></filter>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#d9f6ff"/>
+    <stop offset="1" stop-color="#f4fcff"/>
+  </linearGradient>
+  <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#88cf61"/>
+    <stop offset="1" stop-color="#3d934b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="11" stdDeviation="10" flood-opacity=".18"/></filter>
+  <filter id="soft"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-opacity=".14"/></filter>
 </defs>
-<rect width="900" height="540" rx="32" fill="#eaf9ff"/>
-<g transform="translate(70 60)" stroke="#fff" stroke-width="8" stroke-linejoin="round" filter="url(#s)">
- <path id="guanacaste" d="M55 130 L165 45 L245 75 L220 165 L150 235 L65 210 Z" fill="#aeb8bf"/>
- <path id="alajuela" d="M165 45 L355 42 L410 115 L315 185 L220 165 L245 75 Z" fill="#aeb8bf"/>
- <path id="heredia" d="M355 42 L455 72 L478 145 L410 175 L410 115 Z" fill="#aeb8bf"/>
- <path id="san-jose" d="M315 185 L410 175 L500 240 L450 320 L350 285 Z" fill="#aeb8bf"/>
- <path id="cartago" d="M410 175 L478 145 L565 215 L540 300 L500 240 Z" fill="#aeb8bf"/>
- <path id="puntarenas" d="M65 210 L150 235 L315 185 L350 285 L450 320 L610 410 L545 445 L365 365 L205 300 L95 330 Z" fill="#aeb8bf"/>
- <path id="limon" d="M478 145 L610 120 L720 210 L700 350 L610 410 L540 300 L565 215 Z" fill="#6fcf55"/>
+
+<rect width="1000" height="620" rx="36" fill="url(#sea)"/>
+
+<!-- Decorative waves -->
+<g opacity=".35">
+  <path d="M0 110 C110 90 165 145 265 128 S470 90 590 115 805 160 1000 115" fill="none" stroke="#79d9ee" stroke-width="8" stroke-linecap="round"/>
+  <path d="M0 520 C115 500 180 545 280 530 S495 487 620 517 840 563 1000 525" fill="none" stroke="#79d9ee" stroke-width="8" stroke-linecap="round"/>
 </g>
-<g font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#24364b">
- <text x="110" y="255">Guanacaste</text>
- <text x="285" y="125">Alajuela</text>
- <text x="448" y="120">Heredia</text>
- <text x="385" y="295">San José</text>
- <text x="515" y="250">Cartago</text>
- <text x="255" y="410">Puntarenas</text>
- <text x="665" y="285" fill="#123d24">Limón</text>
+
+<!-- Country group -->
+<g transform="translate(120 88)" filter="url(#shadow)">
+  <!-- Outer silhouette, more organic Costa Rica-like -->
+  <path d="M110 232
+           C118 205, 132 186, 163 167
+           C189 150, 214 141, 257 128
+           C316 111, 365 95, 420 97
+           C463 99, 510 114, 549 137
+           C582 156, 618 180, 648 182
+           C677 184, 706 175, 728 184
+           C746 191, 754 204, 771 224
+           C787 244, 797 261, 804 287
+           C811 312, 809 336, 797 357
+           C783 380, 759 395, 738 412
+           C712 433, 682 449, 651 460
+           C620 471, 597 487, 565 498
+           C527 510, 478 517, 429 511
+           C391 507, 361 493, 330 477
+           C303 463, 282 447, 254 441
+           C216 433, 192 443, 159 434
+           C133 427, 112 412, 95 393
+           C79 375, 67 352, 61 327
+           C53 294, 53 272, 62 251
+           C72 229, 91 223, 110 232 Z"
+        fill="url(#land)" stroke="#ffffff" stroke-width="9" stroke-linejoin="round"/>
+
+  <!-- Provinces -->
+  <!-- Guanacaste -->
+  <path d="M110 232
+           C118 205, 132 186, 163 167
+           C189 150, 214 141, 257 128
+           C279 145, 285 176, 275 202
+           C263 232, 238 250, 216 274
+           C196 294, 183 322, 164 343
+           C143 332, 126 315, 104 305
+           C88 297, 73 297, 61 300
+           C53 276, 55 262, 62 251
+           C72 229, 91 223, 110 232 Z"
+        fill="#aeb8bf" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- Alajuela -->
+  <path d="M257 128
+           C316 111, 365 95, 420 97
+           C441 118, 448 141, 446 168
+           C444 192, 425 210, 406 225
+           C383 243, 357 255, 333 270
+           C306 286, 279 297, 257 302
+           C241 285, 226 278, 216 274
+           C238 250, 263 232, 275 202
+           C285 176, 279 145, 257 128 Z"
+        fill="#aeb8bf" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- Heredia -->
+  <path d="M420 97
+           C463 99, 510 114, 549 137
+           C546 158, 534 174, 520 188
+           C505 203, 487 210, 467 215
+           C446 219, 425 214, 406 225
+           C425 210, 444 192, 446 168
+           C448 141, 441 118, 420 97 Z"
+        fill="#aeb8bf" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- San Jose -->
+  <path d="M257 302
+           C279 297, 306 286, 333 270
+           C357 255, 383 243, 406 225
+           C425 214, 446 219, 467 215
+           C487 235, 489 261, 478 281
+           C466 303, 445 317, 425 331
+           C395 351, 364 369, 335 377
+           C307 384, 280 379, 254 367
+           C248 346, 247 322, 257 302 Z"
+        fill="#aeb8bf" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- Cartago -->
+  <path d="M467 215
+           C487 210, 505 203, 520 188
+           C534 174, 546 158, 549 137
+           C582 156, 618 180, 648 182
+           C659 199, 663 215, 658 232
+           C650 258, 628 273, 606 288
+           C584 303, 560 317, 540 330
+           C521 342, 497 350, 475 348
+           C452 346, 435 339, 425 331
+           C445 317, 466 303, 478 281
+           C489 261, 487 235, 467 215 Z"
+        fill="#aeb8bf" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- Limon -->
+  <path d="M648 182
+           C677 184, 706 175, 728 184
+           C746 191, 754 204, 771 224
+           C787 244, 797 261, 804 287
+           C811 312, 809 336, 797 357
+           C783 380, 759 395, 738 412
+           C712 433, 682 449, 651 460
+           C630 443, 618 422, 608 399
+           C599 378, 592 358, 583 340
+           C573 319, 560 302, 540 330
+           C560 317, 584 303, 606 288
+           C628 273, 650 258, 658 232
+           C663 215, 659 199, 648 182 Z"
+        fill="#6fcf55" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- Puntarenas -->
+  <path d="M61 300
+           C73 297, 88 297, 104 305
+           C126 315, 143 332, 164 343
+           C183 322, 196 294, 216 274
+           C226 278, 241 285, 257 302
+           C247 322, 248 346, 254 367
+           C280 379, 307 384, 335 377
+           C364 369, 395 351, 425 331
+           C435 339, 452 346, 475 348
+           C458 369, 438 387, 419 401
+           C390 422, 359 441, 330 477
+           C303 463, 282 447, 254 441
+           C216 433, 192 443, 159 434
+           C133 427, 112 412, 95 393
+           C79 375, 67 352, 61 327
+           C58 315, 58 308, 61 300 Z"
+        fill="#aeb8bf" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- National outline highlight -->
+  <path d="M110 232
+           C118 205, 132 186, 163 167
+           C189 150, 214 141, 257 128
+           C316 111, 365 95, 420 97
+           C463 99, 510 114, 549 137
+           C582 156, 618 180, 648 182
+           C677 184, 706 175, 728 184
+           C746 191, 754 204, 771 224
+           C787 244, 797 261, 804 287
+           C811 312, 809 336, 797 357
+           C783 380, 759 395, 738 412
+           C712 433, 682 449, 651 460
+           C620 471, 597 487, 565 498
+           C527 510, 478 517, 429 511
+           C391 507, 361 493, 330 477
+           C303 463, 282 447, 254 441
+           C216 433, 192 443, 159 434
+           C133 427, 112 412, 95 393
+           C79 375, 67 352, 61 327
+           C53 294, 53 272, 62 251
+           C72 229, 91 223, 110 232 Z"
+        fill="none" stroke="#2f7b3f" stroke-width="5" opacity=".42"/>
 </g>
-<g font-family="Arial, sans-serif" font-size="19" font-weight="700">
- <rect x="575" y="450" width="250" height="54" rx="27" fill="#fff" stroke="#6fcf55" stroke-width="4"/>
- <circle cx="610" cy="477" r="12" fill="#6fcf55"/>
- <text x="635" y="485" fill="#24364b">Provincia disponible</text>
+
+<!-- Decorative icons -->
+<g filter="url(#soft)">
+  <circle cx="173" cy="135" r="28" fill="#ffd43b"/>
+  <path d="M150 145 C145 118 162 101 180 95 C172 116 174 132 190 149 C178 148 162 147 150 145Z" fill="#ffef95"/>
+
+  <g transform="translate(810 440)">
+    <ellipse cx="26" cy="17" rx="22" ry="12" fill="#7ecb87" stroke="#2f7b3f" stroke-width="3"/>
+    <circle cx="51" cy="17" r="10" fill="#7ecb87" stroke="#2f7b3f" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(707 126)">
+    <rect x="0" y="24" width="78" height="8" rx="4" fill="#5e4a39"/>
+    <rect x="8" y="-5" width="8" height="30" fill="#24364b"/>
+    <path d="M12 -5 L12 -30 L35 -10" fill="none" stroke="#24364b" stroke-width="5"/>
+    <rect x="28" y="10" width="16" height="12" fill="#f05a38"/>
+    <rect x="46" y="10" width="16" height="12" fill="#2e7ab8"/>
+  </g>
+
+  <g transform="translate(250 470)">
+    <path d="M12 62 C19 38 28 22 44 0" stroke="#8d552f" stroke-width="8" fill="none"/>
+    <path d="M45 5 C20 -10 5 -5 0 4 C18 2 32 2 45 5" fill="#197a36"/>
+    <path d="M45 5 C32 -18 43 -27 56 -31 C53 -16 49 -6 45 5" fill="#197a36"/>
+    <path d="M45 5 C68 -12 82 -3 88 6 C71 1 58 1 45 5" fill="#197a36"/>
+  </g>
+</g>
+
+<!-- Labels -->
+<g font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="#24364b">
+  <text x="182" y="278">Guanacaste</text>
+  <text x="360" y="236">Alajuela</text>
+  <text x="515" y="206">Heredia</text>
+  <text x="414" y="366">San José</text>
+  <text x="566" y="307">Cartago</text>
+  <text x="242" y="448">Puntarenas</text>
+  <text x="772" y="343" fill="#123d24">Limón</text>
+</g>
+
+<!-- Title panel -->
+<g filter="url(#soft)">
+  <rect x="48" y="34" width="390" height="88" rx="24" fill="#ffffff" opacity=".96"/>
+  <text x="76" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="900" fill="#0b6b4f">Costa Rica</text>
+  <text x="76" y="102" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#35556a">Explora las provincias y desbloquea tu aventura</text>
+</g>
+
+<!-- Legend -->
+<g filter="url(#soft)">
+  <rect x="676" y="530" width="270" height="54" rx="26" fill="#ffffff" opacity=".98" stroke="#d6ece3"/>
+  <circle cx="708" cy="557" r="10" fill="#6fcf55"/>
+  <text x="728" y="563" font-family="Arial, sans-serif" font-size="17" font-weight="800" fill="#24364b">Provincia disponible</text>
 </g>
 </svg>
