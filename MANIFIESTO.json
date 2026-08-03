@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "archivos": [
     {
       "archivo": ".nojekyll",
@@ -8,8 +8,8 @@
     },
     {
       "archivo": "README.md",
-      "bytes": 3177,
-      "sha256_12": "9a1b844ec1f8"
+      "bytes": 2613,
+      "sha256_12": "64c0fe263ea6"
     },
     {
       "archivo": "ar-limon.html",
@@ -37,9 +37,9 @@
       "sha256_12": "aa4258881743"
     },
     {
-      "archivo": "assets/mapa-costa-rica.svg",
-      "bytes": 1957,
-      "sha256_12": "0675c63dedd6"
+      "archivo": "assets/mapa-costa-rica-color.png",
+      "bytes": 717004,
+      "sha256_12": "166e171cb728"
     },
     {
       "archivo": "datos/catalogo.js",
@@ -53,18 +53,18 @@
     },
     {
       "archivo": "estilos.css",
-      "bytes": 11220,
-      "sha256_12": "7f5135c8eb10"
+      "bytes": 14068,
+      "sha256_12": "4438ccc099a9"
     },
     {
       "archivo": "index.html",
-      "bytes": 8125,
-      "sha256_12": "b589e9fde93d"
+      "bytes": 9133,
+      "sha256_12": "88bf998cb947"
     },
     {
       "archivo": "juego.js",
-      "bytes": 14177,
-      "sha256_12": "2b40bca36155"
+      "bytes": 14297,
+      "sha256_12": "31d85d71b158"
     },
     {
       "archivo": "marcador-prueba.html",

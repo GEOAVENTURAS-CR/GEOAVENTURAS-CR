@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b6b4f">
   <meta name="description" content="GeoAventuras CR: juego educativo WebAR sobre las provincias de Costa Rica.">
-  <title>GeoAventuras CR · v0.2</title>
+  <title>GeoAventuras CR · v0.3</title>
   <link rel="stylesheet" href="estilos.css">
   <script defer src="datos/catalogo.js"></script>
   <script defer src="datos/limon.js"></script>
@@ -19,6 +19,9 @@
       </button>
 
       <div class="top-actions">
+        <button class="new-player-button" id="newPlayerBtn" type="button">
+          <span>👤</span> Nuevo jugador
+        </button>
         <button class="passport-button" id="passportBtn" type="button">
           <span>🛂</span> Pasaporte
         </button>
@@ -32,7 +35,7 @@
     <main>
       <section id="screen-welcome" class="screen active welcome">
         <div class="hero-card">
-          <span class="version-chip">Prototipo v0.2</span>
+          <span class="version-chip">Prototipo v0.3</span>
           <img src="assets/logo-geoaventuras.jpg" alt="GeoAventuras CR" class="hero-logo">
           <p class="eyebrow">Feria Científica EXPOTEC 2026</p>
           <h1>Explora, aprende y conquista las 7 provincias de Costa Rica</h1>
@@ -44,9 +47,14 @@
           <label for="playerName">Escribe tu nombre para comenzar</label>
           <input id="playerName" type="text" maxlength="40" autocomplete="name" placeholder="Nombre del explorador">
 
-          <p class="camera-note">
-            La experiencia WebAR solicitará permiso para usar la cámara únicamente cuando decidas abrirla.
-          </p>
+          <div class="welcome-notes">
+            <p class="camera-note">
+              La experiencia WebAR solicitará permiso para usar la cámara únicamente cuando decidas abrirla.
+            </p>
+            <p class="new-session-note">
+              Cada participante inicia una partida nueva. El juego siempre solicitará el nombre al abrirse.
+            </p>
+          </div>
 
           <button id="startBtn" class="btn primary">Iniciar aventura</button>
         </div>
@@ -68,10 +76,27 @@
         </div>
 
         <div class="map-layout">
-          <img
-            src="assets/mapa-costa-rica.svg"
-            alt="Mapa esquemático de Costa Rica con Limón disponible"
-            class="cr-map">
+          <div class="map-visual-card">
+            <div class="map-title-badge">
+              <strong>Costa Rica</strong>
+              <span>7 provincias · 1 gran aventura</span>
+            </div>
+
+            <img
+              src="assets/mapa-costa-rica-color.png"
+              alt="Mapa escolar a color de Costa Rica dividido por provincias"
+              class="cr-map">
+
+            <div class="limon-marker" aria-hidden="true">
+              <span class="pulse-dot"></span>
+              <strong>Limón disponible</strong>
+            </div>
+
+            <div class="map-legend">
+              <span><i class="legend-dot active"></i> Disponible</span>
+              <span><i class="legend-lock">🔒</i> Próximamente</span>
+            </div>
+          </div>
 
           <aside>
             <div class="passport-summary">
@@ -106,7 +131,7 @@
             <div id="provinceStatusBox" class="province-status-box"></div>
 
             <div class="action-row">
-              <a id="arBtn" class="btn secondary" href="ar-limon.html">Probar realidad aumentada</a>
+              <a id="arBtn" class="btn secondary" href="ar-limon.html" target="_blank" rel="noopener">Probar realidad aumentada</a>
               <button id="beginQuizBtn" class="btn primary">Comenzar misión</button>
             </div>
           </div>

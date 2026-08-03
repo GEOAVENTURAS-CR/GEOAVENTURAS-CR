@@ -1,13 +1,13 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "geoaventurasStateV02";
+  const SESSION_KEY = "geoaventurasActiveV03";
   const catalog = window.GEO_CATALOGO || [];
   const provinces = window.GEO_PROVINCIAS || {};
   const currentProvinceId = "limon";
 
   const defaultState = {
-    version: "0.2",
+    version: "0.3",
     player: "",
     totalScore: 0,
     completed: {},
@@ -24,46 +24,45 @@
     answered: false
   };
 
-  const $ = (selector) => document.querySelector(selector);
+  const $ = selector => document.querySelector(selector);
   const screens = [...document.querySelectorAll(".screen")];
 
-  function migrateLegacyState() {
-    const legacyPlayer = localStorage.getItem("geoPlayer") || "";
-    const legacyScore = Number(localStorage.getItem("geoScore") || 0);
-    const legacyCompleted = localStorage.getItem("geoLimonCompleted") === "true";
-
-    if (!legacyPlayer && !legacyScore && !legacyCompleted) return null;
-
+  function freshState(player = "") {
     return {
-      ...defaultState,
-      player: legacyPlayer,
-      totalScore: legacyScore,
-      completed: legacyCompleted ? { limon: true } : {},
-      badges: legacyCompleted ? { limon: true } : {},
-      provinceScores: legacyCompleted ? { limon: legacyScore } : {}
+      version: "0.3",
+      player,
+      totalScore: 0,
+      completed: {},
+      badges: {},
+      provinceScores: {}
     };
   }
 
-  function loadState() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return { ...defaultState, ...JSON.parse(saved) };
+  /*
+   * La v0.3 utiliza sessionStorage únicamente durante la partida activa.
+   * Al abrir o recargar el sitio siempre se muestra la bienvenida y se solicita
+   * el nombre. Al presionar "Iniciar aventura" comienza una partida nueva.
+   */
+  let state = freshState();
 
-      const migrated = migrateLegacyState();
-      if (migrated) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
-        return migrated;
-      }
+  function saveSession() {
+    try {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(state));
     } catch (error) {
-      console.warn("No fue posible leer el progreso guardado.", error);
+      console.warn("No fue posible guardar la sesión activa.", error);
     }
-    return structuredClone ? structuredClone(defaultState) : JSON.parse(JSON.stringify(defaultState));
   }
 
-  let state = loadState();
+  function clearPreviousStorage() {
+    // Limpia las versiones anteriores para que el navegador no vuelva a reconocer nombres.
+    [
+      "geoaventurasStateV02",
+      "geoPlayer",
+      "geoScore",
+      "geoLimonCompleted"
+    ].forEach(key => localStorage.removeItem(key));
 
-  function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    sessionStorage.removeItem(SESSION_KEY);
   }
 
   function showScreen(id) {
@@ -121,10 +120,7 @@
         <span class="status">${status}</span>
       `;
 
-      if (available) {
-        card.addEventListener("click", () => openProvince(province.id));
-      }
-
+      if (available) card.addEventListener("click", () => openProvince(province.id));
       grid.appendChild(card);
     });
   }
@@ -136,9 +132,9 @@
     catalog.forEach(province => {
       const completed = Boolean(state.completed[province.id]);
       const badge = provinces[province.id]?.badge;
-
       const stamp = document.createElement("div");
       stamp.className = `passport-stamp ${completed ? "completed" : ""}`;
+
       stamp.innerHTML = completed
         ? `
           <div>
@@ -154,11 +150,13 @@
             <small>Pendiente</small>
           </div>
         `;
+
       grid.appendChild(stamp);
     });
   }
 
   function openPassport() {
+    if (!state.player) return;
     renderPassport();
     $("#passportModal").classList.remove("hidden");
     document.body.classList.add("modal-open");
@@ -217,8 +215,10 @@
     }
 
     input.setCustomValidity("");
-    state.player = name;
-    saveState();
+
+    // Every click starts a completely new participant session.
+    state = freshState(name);
+    saveSession();
     updateHeader();
     renderProvinces();
     showScreen("screen-map");
@@ -247,9 +247,10 @@
     const item = runtime.activities[runtime.currentIndex];
     runtime.answered = false;
 
-    const progress = ((runtime.currentIndex) / runtime.activities.length) * 100;
+    const progress = (runtime.currentIndex / runtime.activities.length) * 100;
     $("#quizProgressBar").style.width = `${progress}%`;
-    $("#activityCategory").textContent = item.type === "info" ? "Contenido educativo" : `Desafío de ${runtime.province.name}`;
+    $("#activityCategory").textContent =
+      item.type === "info" ? "Contenido educativo" : `Desafío de ${runtime.province.name}`;
 
     $("#infoActivity").classList.add("hidden");
     $("#questionActivity").classList.add("hidden");
@@ -352,7 +353,7 @@
     state.totalScore = Object.values(state.provinceScores)
       .reduce((sum, value) => sum + Number(value || 0), 0);
 
-    saveState();
+    saveSession();
 
     $("#finalScore").textContent = runtime.missionScore;
     $("#correctAnswers").textContent = runtime.correctAnswers;
@@ -367,39 +368,51 @@
     } else {
       message = `${state.player}, completaste la misión. La información aprendida te ayudará en el resto del recorrido.`;
     }
-    $("#resultMessage").textContent = message;
 
+    $("#resultMessage").textContent = message;
     updateHeader();
     renderProvinces();
     showScreen("screen-result");
   }
 
-  function resetPrototype() {
-    const confirmed = confirm(
-      "¿Deseas borrar el nombre, el puntaje, los sellos y el avance guardado en este dispositivo?"
-    );
-    if (!confirmed) return;
+  function startNewPlayer(requireConfirmation = true) {
+    const hasActiveGame = Boolean(state.player);
+    if (
+      requireConfirmation &&
+      hasActiveGame &&
+      !confirm("¿Deseas finalizar esta partida e iniciar con un nuevo participante?")
+    ) {
+      return;
+    }
 
-    localStorage.removeItem(STORAGE_KEY);
-    localStorage.removeItem("geoPlayer");
-    localStorage.removeItem("geoScore");
-    localStorage.removeItem("geoLimonCompleted");
+    state = freshState();
+    runtime.currentIndex = 0;
+    runtime.missionScore = 0;
+    runtime.correctAnswers = 0;
+    runtime.answered = false;
 
-    state = JSON.parse(JSON.stringify(defaultState));
+    sessionStorage.removeItem(SESSION_KEY);
     $("#playerName").value = "";
+    closePassport();
     updateHeader();
     renderProvinces();
-    closePassport();
     showScreen("screen-welcome");
+
+    setTimeout(() => $("#playerName").focus(), 250);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     runtime.province = provinces[currentProvinceId];
     runtime.activities = runtime.province?.activities || [];
 
-    $("#playerName").value = state.player;
+    // Required behavior for a shared device at the science fair.
+    clearPreviousStorage();
+    state = freshState();
+    $("#playerName").value = "";
+
     updateHeader();
     renderProvinces();
+    showScreen("screen-welcome");
 
     $("#startBtn").addEventListener("click", startGame);
     $("#playerName").addEventListener("keydown", event => {
@@ -407,13 +420,16 @@
     });
 
     $("#homeLogoBtn").addEventListener("click", () => {
-      if (state.player) showScreen("screen-map");
+      showScreen(state.player ? "screen-map" : "screen-welcome");
     });
 
+    $("#newPlayerBtn").addEventListener("click", () => startNewPlayer(true));
     $("#passportBtn").addEventListener("click", openPassport);
+
     document.querySelectorAll("[data-close-modal]").forEach(element => {
       element.addEventListener("click", closePassport);
     });
+
     document.addEventListener("keydown", event => {
       if (event.key === "Escape") closePassport();
     });
@@ -423,12 +439,10 @@
     $("#nextActivityBtn").addEventListener("click", nextActivity);
     $("#returnMapBtn").addEventListener("click", () => showScreen("screen-map"));
     $("#repeatMissionBtn").addEventListener("click", startMission);
-    $("#resetBtn").addEventListener("click", resetPrototype);
+    $("#resetBtn").addEventListener("click", () => startNewPlayer(true));
 
     document.querySelectorAll("[data-go]").forEach(button => {
       button.addEventListener("click", () => showScreen(button.dataset.go));
     });
-
-    if (state.player) showScreen("screen-map");
   });
 })();

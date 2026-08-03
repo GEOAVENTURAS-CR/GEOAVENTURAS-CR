@@ -1,42 +1,41 @@
-# GeoAventuras CR — Prototipo v0.2
+# GeoAventuras CR — Prototipo v0.3
 
-Versión escalable del juego educativo WebAR sobre las siete provincias de Costa Rica.
+Versión optimizada para uso compartido durante la feria científica.
 
-## Mejoras incorporadas
+## Cambios principales de la v0.3
 
-- Mapa inicial con forma más real de Costa Rica y estilo visual de aventura educativa.
+### Nuevo mapa inicial
 
-- Arquitectura separada por contenido y programación.
-- Archivo independiente para Limón: `datos/limon.js`.
-- Catálogo general de provincias: `datos/catalogo.js`.
-- Pasaporte digital con sellos provinciales.
-- Insignia **Explorador del Caribe**.
-- Migración automática del avance guardado en la versión 0.1.
-- Tarjeta educativa con imagen entre preguntas.
-- Pregunta visual con imagen.
-- Diferentes tipos de actividades:
-  - selección única;
-  - verdadero o falso;
-  - pregunta visual;
-  - tarjeta informativa sin puntaje.
-- Mejor puntaje guardado por provincia.
-- Resumen de respuestas correctas.
-- Diseño preparado para incorporar las otras seis provincias.
-- Prueba WebAR conservada con marcador temporal.
+- Mapa escolar a color con una forma claramente reconocible de Costa Rica.
+- Las siete provincias aparecen delimitadas y rotuladas.
+- Diseño visual inspirado en la referencia aprobada por el equipo.
+- Fondo marino y presentación tipo aventura educativa.
+- Indicador animado de **Limón disponible**.
+- Leyenda de provincias disponibles y próximas.
 
-## Contenido de Limón
+### Nueva administración de participantes
 
-La misión contiene:
+- El juego siempre abre en la pantalla de bienvenida.
+- Siempre solicita el nombre del participante.
+- Cada vez que se presiona **Iniciar aventura**, comienza una partida totalmente nueva.
+- No se reutilizan nombres, puntajes ni avances de jugadores anteriores.
+- Se agregó el botón **Nuevo jugador** para cambiar rápidamente de participante.
+- La realidad aumentada se abre en otra pestaña para no interrumpir la partida actual.
 
-- 6 preguntas evaluadas.
-- 1 tarjeta informativa.
-- Puntaje máximo: 60 puntos.
-- Un solo intento por pregunta.
-- Retroalimentación inmediata.
+## Funciones conservadas
+
+- Pasaporte digital.
 - Sello de Limón.
 - Insignia Explorador del Caribe.
+- Seis preguntas evaluadas.
+- Tarjeta educativa entre preguntas.
+- Pregunta visual.
+- Pregunta de verdadero o falso.
+- Puntaje y respuestas correctas.
+- Experiencia WebAR temporal.
+- Diseño adaptable a computadora, tableta y celular.
 
-## Estructura
+## Estructura principal
 
 ```text
 GEOAVENTURAS-CR/
@@ -50,62 +49,36 @@ GEOAVENTURAS-CR/
 │   └── limon.js
 └── assets/
     ├── logo-geoaventuras.jpg
-    ├── mapa-costa-rica.svg
+    ├── mapa-costa-rica-color.png
     └── limon/
         ├── limon-representativa.svg
         ├── tarjeta-ferrocarril.svg
         └── pregunta-puerto.svg
 ```
 
-## Cómo actualizar desde la v0.1
+## Actualización en GitHub
 
-1. Descomprime `GeoAventuras-CR-v0.2.zip`.
-2. En GitHub abre el repositorio `GEOAVENTURAS-CR`.
+1. Descomprime `GeoAventuras-CR-v0.3.zip`.
+2. En GitHub abre el repositorio.
 3. Selecciona `Add file` → `Upload files`.
-4. Arrastra **todo el contenido interno** de la carpeta v0.2.
-5. GitHub mostrará archivos nuevos y archivos modificados.
-6. En el mensaje del cambio escribe:
+4. Arrastra todo el contenido interno.
+5. Escribe como mensaje:
 
-   `Actualización GeoAventuras CR v0.2`
+   `Actualización GeoAventuras CR v0.3`
 
-7. Presiona `Commit changes`.
+6. Presiona `Commit changes`.
+7. Espera a que GitHub Pages termine de publicar.
+8. Recarga con `Ctrl + F5`.
 
-No es necesario desactivar GitHub Pages. La página se actualizará automáticamente después del commit.
+No es necesario modificar nuevamente la configuración de GitHub Pages.
 
-## Prueba operativa mínima
+## Prueba operativa recomendada
 
-1. Abrir la pantalla de bienvenida.
-2. Escribir el nombre.
-3. Entrar al mapa.
-4. Abrir el pasaporte.
-5. Seleccionar Limón.
-6. Probar la tarjeta informativa.
-7. Completar las seis preguntas.
-8. Verificar puntaje, sello e insignia.
-9. Cerrar y abrir la página para validar que el progreso permanezca guardado.
-10. Probar WebAR desde un celular.
-
-## Cómo agregar preguntas a Limón
-
-Las preguntas están dentro de:
-
-`datos/limon.js`
-
-Para agregar una actividad nueva se incorpora otro objeto dentro de `activities`.
-
-El motor ya está preparado para:
-
-- `single`
-- `boolean`
-- `image-single`
-- `info`
-
-Esta separación permite ampliar Limón aun cuando las demás provincias ya estén construidas.
-
-## Estado del diploma
-
-El certificado PDF se incorporará cuando el recorrido de siete provincias esté disponible, ya que el texto aprobado reconoce la finalización completa del juego.
-
-## Nota técnica WebAR
-
-La v0.2 mantiene el marcador de demostración de MindAR. El paso siguiente será diseñar y compilar una tarjeta marcadora oficial para Limón.
+1. Abrir el juego y confirmar que solicita el nombre.
+2. Iniciar una partida.
+3. Verificar el mapa escolar a color.
+4. Completar Limón.
+5. Presionar **Nuevo jugador**.
+6. Confirmar que solicita otro nombre y que el puntaje inicia en cero.
+7. Cerrar y volver a abrir el sitio.
+8. Confirmar que nuevamente solicita el nombre.
