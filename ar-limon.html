@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>WebAR Limón · GeoAventuras CR</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <style>
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#071b1a;color:white}
+    .overlay{position:fixed;z-index:10;left:0;right:0;top:0;padding:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#071b1ad9,transparent);pointer-events:none}
+    .overlay a,.overlay button{pointer-events:auto;color:white;text-decoration:none;background:#0b6b4f;border:0;border-radius:12px;padding:11px 14px;font-weight:700}
+    .guide{position:fixed;z-index:10;left:50%;bottom:22px;transform:translateX(-50%);width:min(92%,620px);background:#071b1ad9;border:1px solid #ffffff40;border-radius:16px;padding:13px 16px;text-align:center}
+    .guide strong{color:#a7ee69}
+    a-scene{width:100vw;height:100vh}
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <a href="index.html">← Volver al juego</a>
+    <a href="marcador-prueba.html" target="_blank" rel="noopener">Ver marcador</a>
+  </div>
+  <div class="guide"><strong>Prueba WebAR:</strong> permite la cámara y enfoca el marcador de prueba. Para probar con un solo teléfono, muestra el marcador en una computadora o imprímelo.</div>
+
+  <a-scene
+    mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind; autoStart: true; uiScanning: yes; uiLoading: yes; filterMinCF: 0.001; filterBeta: 1000;"
+    color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false"
+    embedded>
+    <a-assets>
+      <img id="limonVisual" src="assets/limon-representativa.svg">
+    </a-assets>
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-plane src="#limonVisual" position="0 0 0" width="1.25" height="0.83"
+        animation="property: position; from: 0 0 0; to: 0 0.06 0; dur: 1200; dir: alternate; loop: true; easing: easeInOutSine">
+      </a-plane>
+      <a-text value="LIMON: PUERTA DEL CARIBE" color="#ffffff" align="center" width="2.2"
+        position="0 -0.58 0.05" geometry="primitive: plane; width: 1.15; height: .16" material="color: #0b6b4f; opacity: .94">
+      </a-text>
+    </a-entity>
+  </a-scene>
+</body>
+</html>

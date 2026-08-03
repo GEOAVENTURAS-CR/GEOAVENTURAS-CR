@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
+<title id="title">Mapa interactivo esquemático de Costa Rica</title>
+<desc id="desc">Mapa estilizado con Limón resaltado y las demás provincias bloqueadas.</desc>
+<defs>
+ <filter id="s"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-opacity=".18"/></filter>
+</defs>
+<rect width="900" height="540" rx="32" fill="#eaf9ff"/>
+<g transform="translate(70 60)" stroke="#fff" stroke-width="8" stroke-linejoin="round" filter="url(#s)">
+ <path id="guanacaste" d="M55 130 L165 45 L245 75 L220 165 L150 235 L65 210 Z" fill="#aeb8bf"/>
+ <path id="alajuela" d="M165 45 L355 42 L410 115 L315 185 L220 165 L245 75 Z" fill="#aeb8bf"/>
+ <path id="heredia" d="M355 42 L455 72 L478 145 L410 175 L410 115 Z" fill="#aeb8bf"/>
+ <path id="san-jose" d="M315 185 L410 175 L500 240 L450 320 L350 285 Z" fill="#aeb8bf"/>
+ <path id="cartago" d="M410 175 L478 145 L565 215 L540 300 L500 240 Z" fill="#aeb8bf"/>
+ <path id="puntarenas" d="M65 210 L150 235 L315 185 L350 285 L450 320 L610 410 L545 445 L365 365 L205 300 L95 330 Z" fill="#aeb8bf"/>
+ <path id="limon" d="M478 145 L610 120 L720 210 L700 350 L610 410 L540 300 L565 215 Z" fill="#6fcf55"/>
+</g>
+<g font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#24364b">
+ <text x="110" y="255">Guanacaste</text>
+ <text x="285" y="125">Alajuela</text>
+ <text x="448" y="120">Heredia</text>
+ <text x="385" y="295">San José</text>
+ <text x="515" y="250">Cartago</text>
+ <text x="255" y="410">Puntarenas</text>
+ <text x="665" y="285" fill="#123d24">Limón</text>
+</g>
+<g font-family="Arial, sans-serif" font-size="19" font-weight="700">
+ <rect x="575" y="450" width="250" height="54" rx="27" fill="#fff" stroke="#6fcf55" stroke-width="4"/>
+ <circle cx="610" cy="477" r="12" fill="#6fcf55"/>
+ <text x="635" y="485" fill="#24364b">Provincia disponible</text>
+</g>
+</svg>

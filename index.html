@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b6b4f">
+  <meta name="description" content="GeoAventuras CR: juego educativo sobre las provincias de Costa Rica.">
+  <title>GeoAventuras CR</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="juego.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <img src="assets/logo-geoaventuras.jpg" alt="Logo de GeoAventuras CR" class="top-logo">
+      <div class="top-stats">
+        <span id="playerBadge">Explorador</span>
+        <strong><span id="scoreTop">0</span> pts</strong>
+      </div>
+    </header>
+
+    <main>
+      <section id="screen-welcome" class="screen active welcome">
+        <div class="hero-card">
+          <img src="assets/logo-geoaventuras.jpg" alt="GeoAventuras CR" class="hero-logo">
+          <p class="eyebrow">Feria Científica EXPOTEC 2026</p>
+          <h1>Explora, aprende y conquista las 7 provincias de Costa Rica</h1>
+          <p>Recorre el país de forma divertida e interactiva. Descubre datos, utiliza realidad aumentada, responde preguntas y acumula puntos.</p>
+          <label for="playerName">Escribe tu nombre para comenzar</label>
+          <input id="playerName" type="text" maxlength="40" autocomplete="name" placeholder="Nombre del explorador">
+          <p class="camera-note">Durante la experiencia WebAR, el navegador solicitará permiso para usar la cámara.</p>
+          <button id="startBtn" class="btn primary">Iniciar aventura</button>
+        </div>
+      </section>
+
+      <section id="screen-map" class="screen">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Ruta nacional</p>
+            <h2>Mapa de Costa Rica</h2>
+            <p>Limón está disponible. Las demás provincias se habilitarán progresivamente.</p>
+          </div>
+          <div class="progress-box">
+            <span>Progreso</span>
+            <strong id="progressText">0 de 7</strong>
+          </div>
+        </div>
+
+        <div class="map-layout">
+          <img src="assets/mapa-costa-rica.svg" alt="Mapa esquemático de Costa Rica con Limón disponible" class="cr-map">
+          <div class="province-grid" id="provinceGrid"></div>
+        </div>
+      </section>
+
+      <section id="screen-limon" class="screen">
+        <button class="back-link" data-go="screen-map">← Volver al mapa</button>
+        <div class="province-hero">
+          <img src="assets/limon-representativa.svg" alt="Ilustración representativa de Limón">
+          <div class="province-copy">
+            <p class="eyebrow">Provincia 1</p>
+            <h2>Limón</h2>
+            <p>Limón se ubica en la zona este y noreste de Costa Rica, junto al mar Caribe. Destaca por su riqueza natural, diversidad cultural y actividad portuaria.</p>
+            <div class="fact-grid">
+              <div><span>Capital</span><strong>Limón</strong></div>
+              <div><span>Litoral</span><strong>Caribe</strong></div>
+              <div><span>Preguntas</span><strong>6</strong></div>
+              <div><span>Puntaje máximo</span><strong>60</strong></div>
+            </div>
+            <div class="action-row">
+              <a class="btn secondary" href="ar-limon.html">Probar realidad aumentada</a>
+              <button id="beginQuizBtn" class="btn primary">Comenzar preguntas</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-quiz" class="screen">
+        <div class="quiz-header">
+          <div>
+            <p class="eyebrow">Desafío de Limón</p>
+            <h2 id="questionCounter">Pregunta 1 de 6</h2>
+          </div>
+          <div class="score-chip"><span id="quizScore">0</span> puntos</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-progress"><span id="quizProgressBar"></span></div>
+          <h3 id="questionText"></h3>
+          <div id="answers" class="answers"></div>
+          <div id="feedback" class="feedback" aria-live="polite"></div>
+          <button id="nextQuestionBtn" class="btn primary hidden">Continuar</button>
+        </div>
+      </section>
+
+      <section id="screen-result" class="screen">
+        <div class="result-card">
+          <div class="result-icon">🏆</div>
+          <p class="eyebrow">Provincia completada</p>
+          <h2>¡Misión Limón finalizada!</h2>
+          <p id="resultMessage"></p>
+          <div class="big-score"><span id="finalScore">0</span><small>/60 puntos</small></div>
+          <div class="result-actions">
+            <button id="returnMapBtn" class="btn primary">Volver al mapa</button>
+            <button id="resetBtn" class="btn ghost">Reiniciar prototipo</button>
+          </div>
+          <p class="prototype-note">En la versión final, al completar las siete provincias se generará el certificado de participación en PDF.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>GeoAventuras CR · Jugando y aprendiendo las provincias de Costa Rica con realidad aumentada</footer>
+  </div>
+</body>
+</html>
