@@ -1,0 +1,14 @@
+:root{--sky:#57DCFE;--sand:#FDD9B3;--green:#4B971A;--orange:#F24C17;--ink:#1D2C32}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#071217;font-family:"Poppins",Arial,sans-serif;color:#fff}
+#camera{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#071217}
+.ar-overlay{position:absolute;inset:0;display:flex;flex-direction:column;pointer-events:none}
+.ar-topbar{pointer-events:auto;display:flex;justify-content:space-between;align-items:center;padding:14px;background:linear-gradient(rgba(0,0,0,.66),transparent)}
+.ar-topbar button,.ar-card button,.hunt-ui button{border:0;border-radius:14px;padding:12px 15px;font-family:"Fredoka One",sans-serif}
+.ar-topbar button{background:rgba(0,0,0,.52);color:#fff}.ar-topbar div{text-align:right}.ar-topbar small{display:block;font-size:.67rem}.ar-topbar strong{display:block;font-family:"Fredoka One",sans-serif}
+.ar-card{pointer-events:auto;margin:auto;width:min(90%,520px);background:rgba(16,34,38,.90);border:1px solid rgba(255,255,255,.26);border-radius:22px;padding:23px;text-align:center;backdrop-filter:blur(8px)}
+.ar-card h1,.ar-card h2{font-family:"Fredoka One",sans-serif}.camera-icon{font-size:3rem}.ar-card button{background:var(--green);color:#fff}.ar-card small{display:block;margin-top:12px;color:#D4E4E7;font-size:.78rem}
+.hunt-ui{pointer-events:auto;margin:auto auto 20px;width:min(92%,590px);min-height:170px;background:rgba(16,34,38,.82);border-radius:20px;padding:15px;text-align:center;backdrop-filter:blur(7px)}
+.radar{font-size:2.1rem}.hunt-ui strong{display:block}.floating-badge,.success-badge{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;margin:16px auto;background:var(--green);border:10px solid rgba(255,255,255,.86);box-shadow:0 0 38px rgba(87,220,254,.48);font-family:"Fredoka One",sans-serif;font-size:2rem;animation:float 1.3s ease-in-out infinite alternate}
+@keyframes float{from{transform:translateY(5px) rotate(-5deg)}to{transform:translateY(-7px) rotate(5deg)}}.hunt-ui button{background:var(--orange);color:#fff}
+.success{background:rgba(16,34,38,.94)}.success-badge{animation:none}.success button{background:var(--sand);color:var(--ink)}
+.error{background:rgba(95,20,18,.90)}.hidden{display:none!important}

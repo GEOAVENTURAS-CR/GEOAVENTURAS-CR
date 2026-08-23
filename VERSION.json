@@ -1,0 +1,115 @@
+{
+  "version": "1.0-base",
+  "archivos": [
+    {
+      "archivo": ".nojekyll",
+      "bytes": 0,
+      "sha256_12": "e3b0c44298fc"
+    },
+    {
+      "archivo": "MANUAL_VISUAL_APLICADO.md",
+      "bytes": 873,
+      "sha256_12": "5d57b6166d88"
+    },
+    {
+      "archivo": "MIGRACION_GITHUB.md",
+      "bytes": 1316,
+      "sha256_12": "08150c694f83"
+    },
+    {
+      "archivo": "PENDIENTES.md",
+      "bytes": 1157,
+      "sha256_12": "dcf79b08747c"
+    },
+    {
+      "archivo": "README.md",
+      "bytes": 1621,
+      "sha256_12": "bbb4f470e422"
+    },
+    {
+      "archivo": "ar-prototipo.html",
+      "bytes": 2218,
+      "sha256_12": "951e8a1ed2b2"
+    },
+    {
+      "archivo": "assets/logo-principal.webp",
+      "bytes": 188302,
+      "sha256_12": "1acfd983868f"
+    },
+    {
+      "archivo": "assets/mapa-costa-rica.png",
+      "bytes": 151256,
+      "sha256_12": "07707b43560a"
+    },
+    {
+      "archivo": "assets/provincias/alajuela.svg",
+      "bytes": 1358,
+      "sha256_12": "26314a284d8f"
+    },
+    {
+      "archivo": "assets/provincias/cartago.svg",
+      "bytes": 1357,
+      "sha256_12": "a447ccf9c732"
+    },
+    {
+      "archivo": "assets/provincias/guanacaste.svg",
+      "bytes": 1360,
+      "sha256_12": "b400522aa006"
+    },
+    {
+      "archivo": "assets/provincias/heredia.svg",
+      "bytes": 1357,
+      "sha256_12": "5624c20858fc"
+    },
+    {
+      "archivo": "assets/provincias/limon.svg",
+      "bytes": 1356,
+      "sha256_12": "2c342355b399"
+    },
+    {
+      "archivo": "assets/provincias/puntarenas.svg",
+      "bytes": 1360,
+      "sha256_12": "c14059933a35"
+    },
+    {
+      "archivo": "assets/provincias/san-jose.svg",
+      "bytes": 1359,
+      "sha256_12": "82e981075839"
+    },
+    {
+      "archivo": "css/app.css",
+      "bytes": 9716,
+      "sha256_12": "e98ba90151e5"
+    },
+    {
+      "archivo": "css/ar.css",
+      "bytes": 2288,
+      "sha256_12": "b965be46bfa5"
+    },
+    {
+      "archivo": "data/config.js",
+      "bytes": 1079,
+      "sha256_12": "aa50a4d379b7"
+    },
+    {
+      "archivo": "data/provincias.js",
+      "bytes": 16072,
+      "sha256_12": "4bda6fbd89d9"
+    },
+    {
+      "archivo": "index.html",
+      "bytes": 9209,
+      "sha256_12": "5a618ddce350"
+    },
+    {
+      "archivo": "js/app.js",
+      "bytes": 15926,
+      "sha256_12": "d0d6a313a885"
+    },
+    {
+      "archivo": "js/ar-prototipo.js",
+      "bytes": 3257,
+      "sha256_12": "8a5b6259f105"
+    }
+  ]
+}

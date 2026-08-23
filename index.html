@@ -2,228 +2,207 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b6b4f">
-  <meta name="description" content="GeoAventuras CR: juego educativo WebAR sobre las provincias de Costa Rica.">
-  <title>GeoAventuras CR · v0.3</title>
-  <link rel="stylesheet" href="estilos.css">
-  <script defer src="datos/catalogo.js"></script>
-  <script defer src="datos/limon.js"></script>
-  <script defer src="juego.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#4B971A">
+  <meta name="description" content="GeoAventurasCR — recorrido educativo por las provincias de Costa Rica.">
+  <title>GeoAventurasCR · EXPOTEC 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/app.css">
+  <script defer src="data/config.js"></script>
+  <script defer src="data/provincias.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+  <script defer src="js/app.js"></script>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <button class="brand-button" id="homeLogoBtn" aria-label="Ir al mapa">
-        <img src="assets/logo-geoaventuras.jpg" alt="Logo de GeoAventuras CR" class="top-logo">
-      </button>
+  <header class="app-header">
+    <button id="brandBtn" class="brand-btn" type="button" aria-label="Ir al mapa">
+      <img src="assets/logo-principal.webp" alt="GeoAventuras CR">
+    </button>
 
-      <div class="top-actions">
-        <button class="new-player-button" id="newPlayerBtn" type="button">
-          <span>👤</span> Nuevo jugador
-        </button>
-        <button class="passport-button" id="passportBtn" type="button">
-          <span>🛂</span> Pasaporte
-        </button>
-        <div class="top-stats">
-          <span id="playerBadge">Explorador</span>
-          <strong><span id="scoreTop">0</span> pts</strong>
+    <div class="header-actions">
+      <button id="instructionsBtn" class="header-btn" type="button">❓ <span>Cómo jugar</span></button>
+      <button id="passportBtn" class="header-btn" type="button">🛂 <span>Pasaporte</span></button>
+      <button id="soundBtn" class="header-btn" type="button">🔊 <span>Sonido</span></button>
+      <button id="newPlayerBtn" class="header-btn" type="button">👤 <span>Nuevo jugador</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section id="welcomeScreen" class="screen active">
+      <div class="welcome-card">
+        <span class="status-chip">VERSIÓN 1.0 · BASE DE DESARROLLO</span>
+        <img src="assets/logo-principal.webp" class="welcome-logo" alt="GeoAventuras CR">
+
+        <p class="eyebrow">FERIA CIENTÍFICA EXPOTEC 2026</p>
+        <h1>¡Tu aventura por Costa Rica comienza aquí! 🇨🇷</h1>
+        <h2>Explora, aprende y conquista las 7 provincias.</h2>
+
+        <p>¡Hola, explorador! 🧭 Costa Rica tiene 7 provincias llenas de historias, lugares y sorpresas por descubrir.</p>
+        <p>Tu misión será recorrerlas, encontrar tesoros con realidad aumentada, superar retos y conseguir puntos.</p>
+        <p class="challenge">🏆 ¿Podrás conquistar las 7 provincias?</p>
+
+        <label for="playerName">Escribe tu nombre para comenzar</label>
+        <input id="playerName" type="text" maxlength="40" placeholder="Nombre del explorador" autocomplete="off">
+
+        <button id="startBtn" class="btn primary" type="button">🚀 COMENZAR AVENTURA</button>
+      </div>
+    </section>
+
+    <section id="instructionsScreen" class="screen">
+      <div class="content-card">
+        <p class="eyebrow">INSTRUCCIONES DEL JUEGO</p>
+        <h2>🧭 ¿CÓMO JUGAR?</h2>
+
+        <div class="steps">
+          <article>
+            <span>1</span>
+            <div><strong>🗺️ EXPLORA UNA PROVINCIA</strong><p>Explora la provincia disponible en el mapa y comienza tu misión.</p></div>
+          </article>
+          <article>
+            <span>2</span>
+            <div><strong>🎯 SUPERA LOS RETOS</strong><p>Cada provincia tiene 5 preguntas. Necesitas responder correctamente al menos 3 de 5.</p></div>
+          </article>
+          <article>
+            <span>3</span>
+            <div><strong>🔓 DESBLOQUEA LA REALIDAD AUMENTADA</strong><p>Con 60 puntos o más desbloqueas la búsqueda de la insignia.</p></div>
+          </article>
+          <article>
+            <span>4</span>
+            <div><strong>📱 ENCUENTRA EL TESORO</strong><p>Usa la cámara para buscar la insignia 3D escondida en realidad aumentada.</p></div>
+          </article>
+          <article>
+            <span>5</span>
+            <div><strong>🏆 CONQUISTA LAS 7 PROVINCIAS</strong><p>Encuentra las 7 insignias y completa tu recorrido por Costa Rica.</p></div>
+          </article>
+        </div>
+
+        <div class="flow-line">🗺️ Explora → 🎯 Responde 3 de 5 → 🔓 Desbloquea → 📱 Encuentra → 🏆 Conquista</div>
+        <button id="instructionsStartBtn" class="btn primary" type="button">🚀 ¡INICIAR AVENTURA!</button>
+      </div>
+    </section>
+
+    <section id="mapScreen" class="screen">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">RUTA NACIONAL</p>
+          <h2>Mapa de Costa Rica</h2>
+          <p id="mapMessage">Explora la provincia disponible y continúa tu aventura.</p>
+        </div>
+
+        <div class="player-score">
+          <span id="playerLabel">Explorador</span>
+          <strong><span id="totalScore">0</span> / 700 pts</strong>
         </div>
       </div>
-    </header>
 
-    <main>
-      <section id="screen-welcome" class="screen active welcome">
-        <div class="hero-card">
-          <span class="version-chip">Prototipo v0.3</span>
-          <img src="assets/logo-geoaventuras.jpg" alt="GeoAventuras CR" class="hero-logo">
-          <p class="eyebrow">Feria Científica EXPOTEC 2026</p>
-          <h1>Explora, aprende y conquista las 7 provincias de Costa Rica</h1>
-          <p>
-            Recorre el país de forma divertida e interactiva. Descubre datos,
-            utiliza realidad aumentada, supera desafíos y acumula puntos.
-          </p>
-
-          <label for="playerName">Escribe tu nombre para comenzar</label>
-          <input id="playerName" type="text" maxlength="40" autocomplete="name" placeholder="Nombre del explorador">
-
-          <div class="welcome-notes">
-            <p class="camera-note">
-              La experiencia WebAR solicitará permiso para usar la cámara únicamente cuando decidas abrirla.
-            </p>
-            <p class="new-session-note">
-              Cada participante inicia una partida nueva. El juego siempre solicitará el nombre al abrirse.
-            </p>
-          </div>
-
-          <button id="startBtn" class="btn primary">Iniciar aventura</button>
-        </div>
-      </section>
-
-      <section id="screen-map" class="screen">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Ruta nacional</p>
-            <h2>Mapa de Costa Rica</h2>
-            <p>Limón está disponible. Las otras provincias se incorporarán progresivamente.</p>
-          </div>
-
-          <div class="progress-box">
-            <span>Progreso nacional</span>
-            <strong id="progressText">0 de 7</strong>
-            <div class="mini-progress"><span id="nationalProgressBar"></span></div>
-          </div>
+      <div class="map-grid">
+        <div class="map-card">
+          <img src="assets/mapa-costa-rica.png" alt="Mapa de Costa Rica dividido por provincias">
+          <div class="progress-track"><span id="mapProgress"></span></div>
+          <small id="mapProgressText">0 de 7 provincias completadas</small>
         </div>
 
-        <div class="map-layout">
-          <div class="map-visual-card">
-            <div class="map-title-badge">
-              <strong>Costa Rica</strong>
-              <span>7 provincias · 1 gran aventura</span>
-            </div>
+        <div id="provinceList" class="province-list"></div>
+      </div>
+    </section>
 
-            <img
-              src="assets/mapa-costa-rica-color.png"
-              alt="Mapa escolar a color de Costa Rica dividido por provincias"
-              class="cr-map">
+    <section id="provinceScreen" class="screen">
+      <button class="back-link" type="button" data-go="mapScreen">← Volver al mapa</button>
 
-            <div class="limon-marker" aria-hidden="true">
-              <span class="pulse-dot"></span>
-              <strong>Limón disponible</strong>
-            </div>
+      <div class="province-card-large">
+        <img id="provinceImage" src="" alt="">
+        <div>
+          <p id="provinceOrder" class="eyebrow"></p>
+          <h2 id="provinceTitle"></h2>
+          <div id="provinceStatus" class="status-banner"></div>
 
-            <div class="map-legend">
-              <span><i class="legend-dot active"></i> Disponible</span>
-              <span><i class="legend-lock">🔒</i> Próximamente</span>
-            </div>
+          <div class="metrics">
+            <div><small>Preguntas</small><strong>5</strong></div>
+            <div><small>Aprobación</small><strong>60 pts</strong></div>
+            <div><small>Máximo</small><strong>100 pts</strong></div>
+            <div><small>Mejor resultado</small><strong id="provinceBest">0 pts</strong></div>
           </div>
 
-          <aside>
-            <div class="passport-summary">
-              <span class="passport-icon">🛂</span>
-              <div>
-                <strong>Pasaporte GeoAventuras</strong>
-                <p id="passportSummaryText">Completa Limón para obtener tu primer sello.</p>
-              </div>
-            </div>
-            <div class="province-grid" id="provinceGrid"></div>
-          </aside>
+          <div id="provinceActions" class="actions"></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="screen-province" class="screen">
-        <button class="back-link" data-go="screen-map">← Volver al mapa</button>
-
-        <div class="province-hero">
-          <img id="provinceHeroImage" src="" alt="">
-          <div class="province-copy">
-            <p class="eyebrow" id="provinceStage">Provincia 1</p>
-            <h2 id="provinceName">Limón</h2>
-            <p id="provinceSummary"></p>
-
-            <div class="fact-grid">
-              <div><span>Capital</span><strong id="provinceCapital"></strong></div>
-              <div><span>Litoral</span><strong id="provinceCoast"></strong></div>
-              <div><span>Desafíos evaluados</span><strong id="provinceQuestions"></strong></div>
-              <div><span>Puntaje máximo</span><strong id="provinceMaxScore"></strong></div>
-            </div>
-
-            <div id="provinceStatusBox" class="province-status-box"></div>
-
-            <div class="action-row">
-              <a id="arBtn" class="btn secondary" href="ar-limon.html" target="_blank" rel="noopener">Probar realidad aumentada</a>
-              <button id="beginQuizBtn" class="btn primary">Comenzar misión</button>
-            </div>
-          </div>
+    <section id="quizScreen" class="screen">
+      <div class="section-heading">
+        <div>
+          <p id="quizProvince" class="eyebrow"></p>
+          <h2 id="quizCounter"></h2>
         </div>
-      </section>
+        <div class="quiz-score"><span id="quizScore">0</span> pts</div>
+      </div>
 
-      <section id="screen-activity" class="screen">
-        <div class="quiz-header">
-          <div>
-            <p class="eyebrow" id="activityCategory">Desafío de Limón</p>
-            <h2 id="activityCounter">Actividad 1</h2>
-          </div>
-          <div class="score-chip"><span id="quizScore">0</span> puntos</div>
+      <div class="quiz-card">
+        <div class="progress-track"><span id="quizProgress"></span></div>
+        <div class="temporary-warning">⚠️ Las preguntas de esta versión son temporales y serán reemplazadas por el banco definitivo.</div>
+
+        <h3 id="questionText"></h3>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+
+        <button id="nextQuestionBtn" class="btn primary hidden" type="button">Continuar</button>
+      </div>
+    </section>
+
+    <section id="provinceResultScreen" class="screen">
+      <div class="result-card">
+        <div id="resultIcon" class="result-icon">🎯</div>
+        <p class="eyebrow">RESULTADO DE LA PROVINCIA</p>
+        <h2 id="resultTitle"></h2>
+        <div class="score-big"><span id="resultScore">0</span><small>/100 puntos</small></div>
+        <p id="resultText"></p>
+        <div id="resultActions" class="actions centered"></div>
+      </div>
+    </section>
+
+    <section id="finalScreen" class="screen">
+      <div class="final-card">
+        <p class="eyebrow">🛂 PASAPORTE GEOAVENTURAS CR 🇨🇷</p>
+        <h1>¡Misión completada!</h1>
+        <p>Has recorrido las 7 provincias de Costa Rica, superaste sus retos y completaste tu aventura por el país.</p>
+
+        <div class="final-grid">
+          <div><small>Explorador</small><strong id="finalName"></strong></div>
+          <div><small>Puntaje</small><strong><span id="finalScore">0</span> / 700</strong></div>
+          <div><small>Nivel</small><strong id="finalLevel"></strong></div>
+          <div><small>Insignias</small><strong>7 de 7</strong></div>
         </div>
 
-        <div class="quiz-card">
-          <div class="quiz-progress"><span id="quizProgressBar"></span></div>
+        <div id="finalBadges" class="badge-row"></div>
 
-          <div id="infoActivity" class="activity-panel hidden">
-            <span class="content-chip">Aprende antes de responder</span>
-            <img id="infoImage" class="activity-image" src="" alt="">
-            <h3 id="infoHeading"></h3>
-            <p id="infoBody" class="info-body"></p>
-            <button id="continueInfoBtn" class="btn primary">Continuar</button>
-          </div>
+        <p class="congratulations">
+          ¡Felicidades, explorador! Con tus conocimientos, curiosidad y espíritu aventurero lograste completar GeoAventuras CR.<br>
+          <strong>¡Sigue explorando, aprendiendo y descubriendo Costa Rica! 🇨🇷</strong>
+        </p>
 
-          <div id="questionActivity" class="activity-panel hidden">
-            <span id="questionTypeChip" class="content-chip"></span>
-            <img id="questionImage" class="activity-image hidden" src="" alt="">
-            <h3 id="questionText"></h3>
-            <div id="answers" class="answers"></div>
-            <div id="feedback" class="feedback" aria-live="polite"></div>
-            <button id="nextActivityBtn" class="btn primary hidden">Continuar</button>
-          </div>
+        <div class="actions centered">
+          <button id="downloadPassportBtn" class="btn primary" type="button">📄 OBTENER PASAPORTE PDF</button>
+          <button id="finalNewPlayerBtn" class="btn secondary" type="button">👤 NUEVO JUGADOR</button>
         </div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section id="screen-result" class="screen">
-        <div class="result-card">
-          <div class="result-icon">🏆</div>
-          <p class="eyebrow">Provincia completada</p>
-          <h2>¡Misión Limón finalizada!</h2>
-          <p id="resultMessage"></p>
-
-          <div class="result-metrics">
-            <div>
-              <strong id="finalScore">0</strong>
-              <span>de 60 puntos</span>
-            </div>
-            <div>
-              <strong id="correctAnswers">0</strong>
-              <span>respuestas correctas</span>
-            </div>
-          </div>
-
-          <div class="badge-earned">
-            <span class="badge-icon" id="resultBadgeIcon">🌊</span>
-            <div>
-              <small>Nueva insignia</small>
-              <strong id="resultBadgeName">Explorador del Caribe</strong>
-            </div>
-          </div>
-
-          <div class="result-actions">
-            <button id="returnMapBtn" class="btn primary">Volver al mapa</button>
-            <button id="repeatMissionBtn" class="btn secondary">Repetir misión</button>
-            <button id="resetBtn" class="btn ghost">Reiniciar prototipo</button>
-          </div>
-
-          <p class="prototype-note">
-            El certificado PDF se habilitará cuando estén disponibles y completadas las siete provincias.
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      GeoAventuras CR · Jugando y aprendiendo las provincias de Costa Rica con realidad aumentada
-    </footer>
-  </div>
-
-  <div id="passportModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="passportTitle">
+  <div id="passportModal" class="modal hidden" role="dialog" aria-modal="true">
     <div class="modal-backdrop" data-close-modal></div>
     <div class="modal-card">
       <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
-      <p class="eyebrow">Registro de viaje</p>
-      <h2 id="passportTitle">Pasaporte GeoAventuras</h2>
-      <p>Los sellos se obtienen al completar las misiones provinciales.</p>
+      <p class="eyebrow">🛂 PASAPORTE GEOAVENTURAS</p>
+      <h2 id="passportPlayer"></h2>
+      <p><strong>Puntaje:</strong> <span id="passportScore">0</span> / 700</p>
       <div id="passportGrid" class="passport-grid"></div>
     </div>
   </div>
 
-  <noscript>Este juego necesita JavaScript activado para funcionar.</noscript>
+  <noscript>GeoAventuras CR necesita JavaScript activado para funcionar.</noscript>
 </body>
 </html>

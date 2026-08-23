@@ -1,84 +1,66 @@
-# GeoAventuras CR — Prototipo v0.3
+# GeoAventuras CR — v1.0 base de desarrollo
 
-Versión optimizada para uso compartido durante la feria científica.
+Esta versión implementa la arquitectura funcional aprobada y aplica el manual visual entregado por el equipo.
 
-## Cambios principales de la v0.3
+## Manual visual aplicado
 
-### Nuevo mapa inicial
+- Logo principal de GeoAventuras CR.
+- Paleta oficial:
+  - `#57DCFE`
+  - `#FDD9B3`
+  - `#4B971A`
+  - `#F24C17`
+- Tipografía principal: **Fredoka One**.
+- Tipografía secundaria: **Poppins**.
 
-- Mapa escolar a color con una forma claramente reconocible de Costa Rica.
-- Las siete provincias aparecen delimitadas y rotuladas.
-- Diseño visual inspirado en la referencia aprobada por el equipo.
-- Fondo marino y presentación tipo aventura educativa.
-- Indicador animado de **Limón disponible**.
-- Leyenda de provincias disponibles y próximas.
+## Arquitectura funcional incluida
 
-### Nueva administración de participantes
-
-- El juego siempre abre en la pantalla de bienvenida.
-- Siempre solicita el nombre del participante.
-- Cada vez que se presiona **Iniciar aventura**, comienza una partida totalmente nueva.
-- No se reutilizan nombres, puntajes ni avances de jugadores anteriores.
-- Se agregó el botón **Nuevo jugador** para cambiar rápidamente de participante.
-- La realidad aumentada se abre en otra pestaña para no interrumpir la partida actual.
-
-## Funciones conservadas
-
+- Registro de nombre.
+- Instrucciones.
+- Recorrido obligatorio:
+  1. San José
+  2. Puntarenas
+  3. Heredia
+  4. Cartago
+  5. Limón
+  6. Alajuela
+  7. Guanacaste
+- 5 preguntas por provincia.
+- 20 puntos por respuesta correcta.
+- Mínimo 60 puntos para desbloquear la etapa AR.
+- Repetición obligatoria si obtiene menos de 60.
+- Conservación del mejor puntaje.
+- Insignia obligatoria para desbloquear la provincia siguiente.
 - Pasaporte digital.
-- Sello de Limón.
-- Insignia Explorador del Caribe.
-- Seis preguntas evaluadas.
-- Tarjeta educativa entre preguntas.
-- Pregunta visual.
-- Pregunta de verdadero o falso.
-- Puntaje y respuestas correctas.
-- Experiencia WebAR temporal.
-- Diseño adaptable a computadora, tableta y celular.
+- Niveles finales.
+- Generación de pasaporte PDF.
+- Nuevo jugador.
+- Efectos de sonido básicos.
 
-## Estructura principal
+## Preguntas
 
-```text
-GEOAVENTURAS-CR/
-├── index.html
-├── estilos.css
-├── juego.js
-├── ar-limon.html
-├── marcador-prueba.html
-├── datos/
-│   ├── catalogo.js
-│   └── limon.js
-└── assets/
-    ├── logo-geoaventuras.jpg
-    ├── mapa-costa-rica-color.png
-    └── limon/
-        ├── limon-representativa.svg
-        ├── tarjeta-ferrocarril.svg
-        └── pregunta-puerto.svg
-```
+Las preguntas incluidas son **temporales**.
 
-## Actualización en GitHub
+Todo el banco está concentrado en:
 
-1. Descomprime `GeoAventuras-CR-v0.3.zip`.
-2. En GitHub abre el repositorio.
-3. Selecciona `Add file` → `Upload files`.
-4. Arrastra todo el contenido interno.
-5. Escribe como mensaje:
+`data/provincias.js`
 
-   `Actualización GeoAventuras CR v0.3`
+Cuando se entregue el banco definitivo, ese archivo podrá sustituirse sin rehacer el motor del juego.
 
-6. Presiona `Commit changes`.
-7. Espera a que GitHub Pages termine de publicar.
-8. Recarga con `Ctrl + F5`.
+## Realidad aumentada
 
-No es necesario modificar nuevamente la configuración de GitHub Pages.
+`ar-prototipo.html` valida por ahora:
 
-## Prueba operativa recomendada
+- activación de cámara;
+- apertura desde cada provincia;
+- búsqueda visual;
+- captura de insignia;
+- comunicación de la captura al juego;
+- dato curioso y narración.
 
-1. Abrir el juego y confirmar que solicita el nombre.
-2. Iniciar una partida.
-3. Verificar el mapa escolar a color.
-4. Completar Limón.
-5. Presionar **Nuevo jugador**.
-6. Confirmar que solicita otro nombre y que el puntaje inicia en cero.
-7. Cerrar y volver a abrir el sitio.
-8. Confirmar que nuevamente solicita el nombre.
+**No debe confundirse con la AR final.**
+El seguimiento espacial sin marcadores (SLAM/world tracking) sigue pendiente de la prueba técnica específica.
+
+## Publicación
+
+Consulta `MIGRACION_GITHUB.md`.
