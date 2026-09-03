@@ -34,7 +34,7 @@
   <main>
     <section id="welcomeScreen" class="screen active">
       <div class="welcome-card">
-        <span class="status-chip">VERSIÓN 1.0 · BASE DE DESARROLLO</span>
+        <span class="status-chip">VERSIÓN 1.1 · CAMBIOS FUNCIONALES</span>
         <img src="assets/logo-principal.webp" class="welcome-logo" alt="GeoAventuras CR">
 
         <p class="eyebrow">FERIA CIENTÍFICA EXPOTEC 2026</p>
@@ -42,7 +42,7 @@
         <h2>Explora, aprende y conquista las 7 provincias.</h2>
 
         <p>¡Hola, explorador! 🧭 Costa Rica tiene 7 provincias llenas de historias, lugares y sorpresas por descubrir.</p>
-        <p>Tu misión será recorrerlas, encontrar tesoros con realidad aumentada, superar retos y conseguir puntos.</p>
+        <p>Tu misión será recorrerlas, encontrar insignias con realidad aumentada, superar retos y conseguir puntos.</p>
         <p class="challenge">🏆 ¿Podrás conquistar las 7 provincias?</p>
 
         <label for="playerName">Escribe tu nombre para comenzar</label>
@@ -72,7 +72,7 @@
           </article>
           <article>
             <span>4</span>
-            <div><strong>📱 ENCUENTRA EL TESORO</strong><p>Usa la cámara para buscar la insignia 3D escondida en realidad aumentada.</p></div>
+            <div><strong>📱 ENCUENTRA LA INSIGNIA</strong><p>Usa la cámara para buscar la insignia 3D escondida en realidad aumentada.</p></div>
           </article>
           <article>
             <span>5</span>
@@ -80,7 +80,7 @@
           </article>
         </div>
 
-        <div class="flow-line">🗺️ Explora → 🎯 Responde 3 de 5 → 🔓 Desbloquea → 📱 Encuentra → 🏆 Conquista</div>
+        <div class="flow-line">🗺️ Explora → 🎯 Responde 3 de 5 → 🔓 Desbloquea → 📱 Encuentra la insignia → 🏆 Conquista</div>
         <button id="instructionsStartBtn" class="btn primary" type="button">🚀 ¡INICIAR AVENTURA!</button>
       </div>
     </section>
@@ -114,10 +114,17 @@
       <button class="back-link" type="button" data-go="mapScreen">← Volver al mapa</button>
 
       <div class="province-card-large">
-        <img id="provinceImage" src="" alt="">
+        <div class="province-visual-box">
+          <img id="provinceImage" src="" alt="">
+          <div class="visual-note">
+            <strong>Espacio reservado para imagen final de provincia</strong>
+            <small>Formato recomendado: 1600 × 900 px · WEBP o PNG · relación 16:9</small>
+          </div>
+        </div>
         <div>
           <p id="provinceOrder" class="eyebrow"></p>
           <h2 id="provinceTitle"></h2>
+          <p id="provinceIntro" class="province-intro"></p>
           <div id="provinceStatus" class="status-banner"></div>
 
           <div class="metrics">
@@ -137,13 +144,13 @@
         <div>
           <p id="quizProvince" class="eyebrow"></p>
           <h2 id="quizCounter"></h2>
+          <p id="quizReto" class="quiz-reto"></p>
         </div>
         <div class="quiz-score"><span id="quizScore">0</span> pts</div>
       </div>
 
       <div class="quiz-card">
         <div class="progress-track"><span id="quizProgress"></span></div>
-        <div class="temporary-warning">⚠️ Las preguntas de esta versión son temporales y serán reemplazadas por el banco definitivo.</div>
 
         <h3 id="questionText"></h3>
         <div id="answers" class="answers"></div>
@@ -161,6 +168,57 @@
         <div class="score-big"><span id="resultScore">0</span><small>/100 puntos</small></div>
         <p id="resultText"></p>
         <div id="resultActions" class="actions centered"></div>
+      </div>
+    </section>
+
+    <section id="arScreen" class="screen ar-screen">
+      <div class="ar-layout">
+        <div class="ar-stage">
+          <video id="cameraFeed" autoplay playsinline muted></video>
+          <div id="arOverlayHint" class="ar-overlay-hint">Mueve lentamente el celular y explora el espacio…</div>
+          <div id="floatingBadge" class="floating-badge hidden">CR</div>
+        </div>
+
+        <div class="ar-panel">
+          <p class="eyebrow">REALIDAD AUMENTADA</p>
+          <h2 id="arProvinceTitle">Provincia</h2>
+          <p id="arIntroText">Busca la insignia de la provincia y captúrala para completar la misión.</p>
+
+          <div id="cameraPermissionCard" class="ar-info-card">
+            <h3>📷 Activar cámara</h3>
+            <p>La primera vez necesitamos permiso para usar la cámara. Después reutilizaremos esa autorización en las siguientes provincias.</p>
+            <button id="activateCameraBtn" class="btn primary" type="button">ACTIVAR CÁMARA</button>
+          </div>
+
+          <div id="cameraReadyCard" class="ar-info-card hidden">
+            <h3>✅ Cámara lista</h3>
+            <p>La cámara ya está habilitada. Busca la insignia y presiónala cuando aparezca.</p>
+          </div>
+
+          <div class="actions">
+            <button id="showBadgeBtn" class="btn secondary" type="button">✨ MOSTRAR INSIGNIA</button>
+            <button id="captureBadgeBtn" class="btn primary hidden" type="button">🏆 CAPTURAR INSIGNIA</button>
+            <button id="closeArBtn" class="btn ghost" type="button">← Volver</button>
+          </div>
+
+          <small class="ar-note">Nota técnica: esta versión integra el permiso de cámara en una sola experiencia. El seguimiento espacial 3D definitivo sigue siendo la siguiente fase técnica.</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="arSuccessScreen" class="screen">
+      <div class="result-card">
+        <div id="successBadgeVisual" class="badge-token badge-large">CR</div>
+        <p class="eyebrow">¡INSIGNIA OBTENIDA!</p>
+        <h2 id="arSuccessTitle">Provincia completada</h2>
+        <p id="arCuriousFact"></p>
+        <div class="audio-box">
+          <small>Audio recomendado: MP3 · 128 kbps · 44.1 kHz · 8–20 segundos</small>
+          <div class="actions centered">
+            <button id="listenFactBtn" class="btn secondary" type="button">🔊 Escuchar dato</button>
+            <button id="continueFromArBtn" class="btn primary" type="button">🗺️ Volver al mapa</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -185,8 +243,42 @@
         </p>
 
         <div class="actions centered">
-          <button id="downloadPassportBtn" class="btn primary" type="button">📄 OBTENER PASAPORTE PDF</button>
+          <button id="previewCertificateBtn" class="btn primary" type="button">📄 VER CERTIFICADO</button>
           <button id="finalNewPlayerBtn" class="btn secondary" type="button">👤 NUEVO JUGADOR</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificatePreviewScreen" class="screen">
+      <div class="certificate-wrap">
+        <div id="certificatePreview" class="certificate-preview">
+          <div class="cert-topline"></div>
+          <div class="cert-body">
+            <p class="cert-small">GeoAventuras CR · EXPOTEC 2026</p>
+            <h1>Certificado de Participación</h1>
+            <p>Se reconoce a</p>
+            <h2 id="certName">Nombre</h2>
+            <p>por completar satisfactoriamente el recorrido educativo interactivo de las 7 provincias de Costa Rica.</p>
+
+            <div class="cert-grid">
+              <div><small>Puntaje</small><strong id="certScore">0 / 700</strong></div>
+              <div><small>Nivel</small><strong id="certLevel">Explorador</strong></div>
+              <div><small>Insignias</small><strong>7 de 7</strong></div>
+              <div><small>Proyecto</small><strong>GeoAventuras CR</strong></div>
+            </div>
+
+            <p class="cert-footer-msg">¡Sigue explorando, aprendiendo y descubriendo Costa Rica!</p>
+            <div class="cert-signs">
+              <div class="sign-line">Firma del proyecto</div>
+              <div class="sign-line">Sello educativo</div>
+            </div>
+          </div>
+          <div class="cert-bottomline"></div>
+        </div>
+
+        <div class="actions centered">
+          <button id="downloadCertificateBtn" class="btn primary" type="button">⬇️ DESCARGAR PDF</button>
+          <button id="backFromCertificateBtn" class="btn ghost" type="button">← Volver</button>
         </div>
       </div>
     </section>
@@ -194,12 +286,28 @@
 
   <div id="passportModal" class="modal hidden" role="dialog" aria-modal="true">
     <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card">
+    <div class="modal-card passport-book">
       <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
-      <p class="eyebrow">🛂 PASAPORTE GEOAVENTURAS</p>
-      <h2 id="passportPlayer"></h2>
-      <p><strong>Puntaje:</strong> <span id="passportScore">0</span> / 700</p>
-      <div id="passportGrid" class="passport-grid"></div>
+      <div class="passport-cover">
+        <div class="passport-emblem">🛂</div>
+        <h2>Pasaporte GeoAventuras CR</h2>
+        <p>Documento oficial del explorador</p>
+      </div>
+
+      <div class="passport-spread">
+        <div class="passport-page">
+          <p class="eyebrow">DATOS DEL EXPLORADOR</p>
+          <h3 id="passportPlayer"></h3>
+          <p><strong>Puntaje total:</strong> <span id="passportScore">0</span> / 700</p>
+          <p><strong>Nivel:</strong> <span id="passportLevel">Explorador</span></p>
+          <p><strong>Insignias obtenidas:</strong> <span id="passportBadgesCount">0</span> de 7</p>
+        </div>
+
+        <div class="passport-page">
+          <p class="eyebrow">VISAS Y SELLOS</p>
+          <div id="passportGrid" class="passport-grid"></div>
+        </div>
+      </div>
     </div>
   </div>
 

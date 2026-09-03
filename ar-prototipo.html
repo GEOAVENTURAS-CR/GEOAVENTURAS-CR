@@ -1,53 +1,20 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#1D2C32">
-  <title>Prototipo AR · GeoAventuras CR</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/ar.css">
-  <script defer src="data/provincias.js"></script>
-  <script defer src="js/ar-prototipo.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GeoAventuras CR · AR integrada</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;padding:32px;background:#f7fcfd;color:#1D2C32}
+.card{max-width:720px;margin:auto;background:#fff;border:1px solid #d7e5e8;border-radius:18px;padding:24px}
+</style>
 </head>
 <body>
-  <video id="camera" autoplay playsinline muted></video>
-
-  <div class="ar-overlay">
-    <div class="ar-topbar">
-      <button id="closeBtn" type="button">✕ Cerrar</button>
-      <div><small>PROTOTIPO AR VISUAL</small><strong id="provinceName">Provincia</strong></div>
-    </div>
-
-    <div id="permissionCard" class="ar-card">
-      <div class="camera-icon">📱</div>
-      <h1>Busca la insignia</h1>
-      <p>Permite el acceso a la cámara. Esta pantalla valida el flujo de búsqueda y captura.</p>
-      <button id="cameraBtn" type="button">ACTIVAR CÁMARA</button>
-      <small>Importante: el seguimiento espacial 3D definitivo todavía está pendiente de la prueba técnica SLAM.</small>
-    </div>
-
-    <div id="huntUI" class="hunt-ui hidden">
-      <div class="radar">📡</div>
-      <strong id="huntText">Mueve lentamente el celular y explora el espacio.</strong>
-      <div id="badge" class="floating-badge hidden">CR</div>
-      <button id="captureBtn" class="hidden" type="button">🏆 CAPTURAR INSIGNIA</button>
-    </div>
-
-    <div id="successCard" class="ar-card success hidden">
-      <div id="successBadge" class="success-badge">CR</div>
-      <h1>¡Insignia obtenida!</h1>
-      <p id="curiousFact"></p>
-      <button id="listenBtn" type="button">🔊 Escuchar dato</button>
-      <small>Regresa a la pestaña del juego para continuar.</small>
-    </div>
-
-    <div id="errorCard" class="ar-card error hidden">
-      <h2>No fue posible activar la cámara</h2>
-      <p id="errorText"></p>
-    </div>
-  </div>
+<div class="card">
+<h1>AR integrada en la v1.1</h1>
+<p>La realidad aumentada ahora se ejecuta dentro de la pantalla principal del juego para reutilizar el permiso de cámara y mejorar la experiencia.</p>
+<p>Regresa al inicio del proyecto y entra normalmente al flujo de provincias.</p>
+<p><a href="index.html">Ir al juego</a></p>
+</div>
 </body>
 </html>
