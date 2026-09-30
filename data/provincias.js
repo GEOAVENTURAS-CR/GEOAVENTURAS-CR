@@ -34,7 +34,9 @@ window.GEO_PROVINCIAS = [
           "Volcán Arenal.",
           "Parque Nacional Corcovado."
         ],
-        "correcta": 1
+        "correcta": 1,
+        "imagen": "assets/preguntas/san-jose-r2.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estas instituciones se encuentra en la provincia de San José?"
       },
       {
         "id": "san-jose-r3",
@@ -60,7 +62,9 @@ window.GEO_PROVINCIAS = [
           "Festival de la Tortuga.",
           "Festival del Banano."
         ],
-        "correcta": 1
+        "correcta": 1,
+        "imagen": "assets/preguntas/san-jose-r4.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estas tradiciones pertenece a la provincia de San José?"
       },
       {
         "id": "san-jose-r5",
@@ -75,7 +79,8 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 2
       }
-    ]
+    ],
+    "portada": "assets/portadas/san-jose.webp"
   },
   {
     "id": "puntarenas",
@@ -125,7 +130,9 @@ window.GEO_PROVINCIAS = [
           "Moín.",
           "Quepos."
         ],
-        "correcta": 1
+        "correcta": 1,
+        "imagen": "assets/preguntas/puntarenas-r3.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estos puertos se encuentra en la provincia de Puntarenas?"
       },
       {
         "id": "puntarenas-r4",
@@ -138,7 +145,9 @@ window.GEO_PROVINCIAS = [
           "La Romería.",
           "El Día del Boyero."
         ],
-        "correcta": 0
+        "correcta": 0,
+        "imagen": "assets/preguntas/puntarenas-r4.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estas celebraciones pertenece a la provincia de Puntarenas?"
       },
       {
         "id": "puntarenas-r5",
@@ -153,7 +162,8 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 1
       }
-    ]
+    ],
+    "portada": "assets/portadas/puntarenas.webp"
   },
   {
     "id": "heredia",
@@ -203,7 +213,9 @@ window.GEO_PROVINCIAS = [
           "Instituto Tecnológico de Costa Rica.",
           "Universidad Estatal a Distancia."
         ],
-        "correcta": 1
+        "correcta": 1,
+        "imagen": "assets/preguntas/heredia-r3.webp",
+        "imagenAlt": "Imagen educativa para: ¿Qué universidad se encuentra en la provincia de Heredia?"
       },
       {
         "id": "heredia-r4",
@@ -216,7 +228,9 @@ window.GEO_PROVINCIAS = [
           "La celebración de la Virgen del Mar.",
           "Los carnavales de Puntarenas."
         ],
-        "correcta": 0
+        "correcta": 0,
+        "imagen": "assets/preguntas/heredia-r4.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estas tradiciones pertenece a la provincia de Heredia?"
       },
       {
         "id": "heredia-r5",
@@ -231,7 +245,8 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 2
       }
-    ]
+    ],
+    "portada": "assets/portadas/heredia.webp"
   },
   {
     "id": "cartago",
@@ -268,7 +283,9 @@ window.GEO_PROVINCIAS = [
           "Juan Vázquez de Coronado.",
           "Juan de Cavallón."
         ],
-        "correcta": 2
+        "correcta": 2,
+        "imagen": "assets/preguntas/cartago-r2.webp",
+        "imagenAlt": "Imagen educativa para: ¿Quién fundó la ciudad de Cartago?"
       },
       {
         "id": "cartago-r3",
@@ -294,7 +311,9 @@ window.GEO_PROVINCIAS = [
           "Se realizan corridas de toros.",
           "Se realiza la romería hacia la Basílica de Los Ángeles."
         ],
-        "correcta": 3
+        "correcta": 3,
+        "imagen": "assets/preguntas/cartago-r4.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estas tradiciones pertenece a la provincia de Cartago?"
       },
       {
         "id": "cartago-r5",
@@ -309,7 +328,8 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 2
       }
-    ]
+    ],
+    "portada": "assets/portadas/cartago.webp"
   },
   {
     "id": "limon",
@@ -346,7 +366,9 @@ window.GEO_PROVINCIAS = [
           "La ampliación del puerto de Caldera.",
           "La fundación de la Casa de Enseñanza de Santo Tomás."
         ],
-        "correcta": 0
+        "correcta": 0,
+        "imagen": "assets/preguntas/limon-r2.webp",
+        "imagenAlt": "Imagen educativa para: ¿Qué obra permitió comunicar la provincia de Limón con el resto del país?"
       },
       {
         "id": "limon-r3",
@@ -372,7 +394,9 @@ window.GEO_PROVINCIAS = [
           "En el Paseo de los Turistas se disfruta el famoso Churchill.",
           "La música de marimba acompaña los bailes típicos."
         ],
-        "correcta": 0
+        "correcta": 0,
+        "imagen": "assets/preguntas/limon-r4.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cuál de estas costumbres es tradicional de la provincia de Limón?"
       },
       {
         "id": "limon-r5",
@@ -387,7 +411,8 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 0
       }
-    ]
+    ],
+    "portada": "assets/portadas/limon.webp"
   },
   {
     "id": "alajuela",
@@ -411,7 +436,9 @@ window.GEO_PROVINCIAS = [
           "La ciudad antigua.",
           "La ciudad de la papa."
         ],
-        "correcta": 1
+        "correcta": 1,
+        "imagen": "assets/preguntas/alajuela-r1.webp",
+        "imagenAlt": "Imagen educativa para: ¿Cómo también es conocida la provincia de Alajuela?"
       },
       {
         "id": "alajuela-r2",
@@ -438,7 +465,9 @@ window.GEO_PROVINCIAS = [
           "Las mascaradas.",
           "El escudo nacional."
         ],
-        "correcta": 1
+        "correcta": 1,
+        "imagen": "assets/preguntas/alajuela-r3.webp",
+        "imagenAlt": "Imagen educativa para: ¿Qué símbolo nacional se creó en el cantón de Sarchí, en la provincia de Alajuela?"
       },
       {
         "id": "alajuela-r4",
@@ -466,7 +495,8 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 0
       }
-    ]
+    ],
+    "portada": "assets/portadas/alajuela.webp"
   },
   {
     "id": "guanacaste",
@@ -544,6 +574,7 @@ window.GEO_PROVINCIAS = [
         ],
         "correcta": 1
       }
-    ]
+    ],
+    "portada": "assets/portadas/guanacaste.webp"
   }
 ];
