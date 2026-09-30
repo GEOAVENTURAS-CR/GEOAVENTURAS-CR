@@ -11,11 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/app.css?v=1.1.1">
-  <script defer src="data/config.js?v=1.1.1"></script>
-  <script defer src="data/provincias.js?v=1.1.1"></script>
+  <link rel="stylesheet" href="css/app.css?v=1.2">
+  <script defer src="data/config.js?v=1.2"></script>
+  <script defer src="data/provincias.js?v=1.2"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
-  <script defer src="js/app.js?v=1.1.1"></script>
+  <script defer src="js/app.js?v=1.2"></script>
 </head>
 <body>
   <header class="app-header">
@@ -34,7 +34,7 @@
   <main>
     <section id="welcomeScreen" class="screen active">
       <div class="welcome-card">
-        <span class="status-chip">VERSIÓN 1.1.1 · HOTFIX</span>
+        <span class="status-chip">VERSIÓN 1.2 · INTEGRACIÓN VISUAL</span>
         <img src="assets/logo-principal.webp" class="welcome-logo" alt="GeoAventuras CR">
 
         <p class="eyebrow">FERIA CIENTÍFICA EXPOTEC 2026</p>
@@ -116,10 +116,6 @@
       <div class="province-card-large">
         <div class="province-visual-box">
           <img id="provinceImage" src="" alt="">
-          <div class="visual-note">
-            <strong>Espacio reservado para imagen final de provincia</strong>
-            <small>Formato recomendado: 1600 × 900 px · WEBP o PNG · relación 16:9</small>
-          </div>
         </div>
         <div>
           <p id="provinceOrder" class="eyebrow"></p>
@@ -152,11 +148,19 @@
       <div class="quiz-card">
         <div class="progress-track"><span id="quizProgress"></span></div>
 
-        <h3 id="questionText"></h3>
-        <div id="answers" class="answers"></div>
-        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <div id="questionLayout" class="question-layout">
+          <div id="questionMedia" class="question-media hidden">
+            <img id="questionImage" src="" alt="">
+          </div>
 
-        <button id="nextQuestionBtn" class="btn primary hidden" type="button">Continuar</button>
+          <div class="question-content">
+            <h3 id="questionText"></h3>
+            <div id="answers" class="answers"></div>
+            <div id="feedback" class="feedback" aria-live="polite"></div>
+
+            <button id="nextQuestionBtn" class="btn primary hidden" type="button">Continuar</button>
+          </div>
+        </div>
       </div>
     </section>
 
