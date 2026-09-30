@@ -141,7 +141,7 @@
     runtime.provinceId = pid;
     $("#provinceOrder").textContent = `PROVINCIA ${p.orden} DE 7`;
     $("#provinceTitle").textContent = p.nombre;
-    $("#provinceImage").src = p.imagen;
+    $("#provinceImage").src = p.portada || p.imagen;
     $("#provinceImage").alt = `Imagen de referencia de ${p.nombre}`;
     $("#provinceBest").textContent = `${s.bestScore} pts`;
     $("#provinceIntro").textContent = p.introduccion || "";
@@ -184,6 +184,22 @@
     $("#quizReto").textContent = q.reto || "";
     $("#quizProgress").style.width = `${runtime.questionIndex / 5 * 100}%`;
     $("#questionText").textContent = q.pregunta;
+
+    const questionLayout = $("#questionLayout");
+    const questionMedia = $("#questionMedia");
+    const questionImage = $("#questionImage");
+
+    if(q.imagen){
+      questionImage.src = q.imagen;
+      questionImage.alt = q.imagenAlt || `Imagen educativa de ${p.nombre}`;
+      questionMedia.classList.remove("hidden");
+      questionLayout.classList.add("has-image");
+    }else{
+      questionImage.removeAttribute("src");
+      questionImage.alt = "";
+      questionMedia.classList.add("hidden");
+      questionLayout.classList.remove("has-image");
+    }
 
     const answers = $("#answers");
     answers.innerHTML = "";
