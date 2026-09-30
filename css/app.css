@@ -223,3 +223,64 @@ radial-gradient(circle at 88% 20%,rgba(253,217,179,.32),transparent 17rem),#fff}
   .cert-body{padding:28px 18px}
   .ar-stage{min-height:340px}
 }
+
+
+/* === GeoAventuras CR v1.2 · Integración visual === */
+.province-visual-box{
+  overflow:hidden;
+  border-radius:20px;
+}
+.province-visual-box > img{
+  display:block;
+  width:100%;
+  aspect-ratio:16 / 9;
+  object-fit:cover;
+  border-radius:20px;
+}
+.question-layout{
+  display:block;
+}
+.question-layout.has-image{
+  display:grid;
+  grid-template-columns:minmax(235px,.72fr) minmax(0,1.28fr);
+  gap:24px;
+  align-items:start;
+}
+.question-media{
+  position:sticky;
+  top:92px;
+}
+.question-media img{
+  display:block;
+  width:100%;
+  max-height:610px;
+  object-fit:contain;
+  border-radius:20px;
+  border:1px solid rgba(29,44,50,.10);
+  background:#F7FCFD;
+  box-shadow:0 10px 28px rgba(29,44,50,.10);
+}
+.question-content{
+  min-width:0;
+}
+@media(max-width:850px){
+  .question-layout.has-image{
+    grid-template-columns:1fr;
+  }
+  .question-media{
+    position:static;
+    max-width:420px;
+    margin:0 auto 4px;
+  }
+  .question-media img{
+    max-height:560px;
+  }
+}
+@media(max-width:520px){
+  .question-media{
+    max-width:100%;
+  }
+  .question-media img{
+    max-height:none;
+  }
+}
